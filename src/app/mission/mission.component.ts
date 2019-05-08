@@ -14,6 +14,7 @@ import { Incident } from '../models/incident';
 import { Mission } from '../models/mission';
 import { ResponderSimulatorService } from '../services/responder-simulator.service';
 import { Socket } from 'ngx-socket-io';
+import { ResponderUpdateEvent } from '../models/responder-update-event';
 
 @Component({
   selector: 'app-mission',
@@ -149,11 +150,18 @@ export class MissionComponent implements OnInit, OnDestroy {
   }
 
   handleResponderLocationUpdate(update: any): void {
-    if (update === null) {
+    if (!update) {
       return;
     }
     this.responder.longitude = update.location.long;
     this.responder.latitude = update.location.lat;
+  }
+
+  handleResponderUpdate(update: ResponderUpdateEvent): void {
+    if (!update || update.messageType !== 'ResponderUpdatedEvent' || !update.body || !update.body.responder) {
+      return;
+    }
+    this.responder = update.body.responder;
   }
 
   handleResponderLocationFromMission(mission: Mission): void {
@@ -179,6 +187,7 @@ export class MissionComponent implements OnInit, OnDestroy {
             this.missionService.watchByResponder(responder).subscribe(this.handleMissionStatusUpdate.bind(this));
             // Watch for location update events on the current responder.
             this.responderService.watchLocation(responder).subscribe(this.handleResponderLocationUpdate.bind(this));
+            this.responderService.watch(responder).subscribe(this.handleResponderUpdate.bind(this));
             // Check whether a mission is already in progress.
             this.missionService.getByResponder(responder).subscribe(mission => {
               this.handleMissionStatusUpdate(mission, false);

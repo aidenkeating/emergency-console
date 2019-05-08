@@ -64,7 +64,7 @@
           (click)="doAvailable()"
           *ngIf="missionStatus !== 'CREATED' && responder.latitude != null"
           [disabled]="missionStatus === 'UPDATED'">
-          <fa-icon [icon]="loadingIcon" [spin]="true" *ngIf="isLoading"></fa-icon> Available
+          <fa-icon [icon]="loadingIcon" [spin]="true" *ngIf="responder.enrolled"></fa-icon> Available
         </button>
         <button
           type="button"

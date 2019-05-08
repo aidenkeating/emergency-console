@@ -57,6 +57,18 @@ export class ResponderService {
     );
   }
 
+  watch(responder: Responder): Observable<any> {
+    return Observable.create(observer => {
+      this.socket.on('topic-responder-event', update => {
+        console.log('Responder watch', update);
+        if (!update || update.responderId !== `${responder.id}`) {
+          return;
+        }
+        observer.next(update);
+      });
+    });
+  }
+
   watchLocation(responder: Responder): Observable<any> {
     return Observable.create(observer => {
       this.socket.on('topic-responder-location-update', update => {
