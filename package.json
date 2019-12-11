@@ -13,7 +13,9 @@
     "build": "$npm_package_ng build --delete-output-path --prod",
     "buildDev": "$npm_package_ng build --watch",
     "start": "node set-config.js && node server.js",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "^0.13.9",
@@ -62,6 +64,8 @@
     "tslib": "^1.9.0",
     "tslint": "~5.12.1",
     "typescript": "~3.2.4",
-    "zone.js": "^0.8.26"
-  }
+    "zone.js": "^0.8.26",
+    "snyk": "^1.258.2"
+  },
+  "snyk": true
 }
