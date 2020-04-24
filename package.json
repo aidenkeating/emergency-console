@@ -54,7 +54,7 @@
     "ngx-socket-io": "^2.1.1",
     "ngx-toastr": "^10.0.2",
     "npm-sort": "0.0.4",
-    "replace": "^1.1.0",
+    "replace": "^1.2.0",
     "rxjs": "~6.4.0",
     "simple-line-icons": "^2.4.1",
     "socket.io": "^2.2.0",
