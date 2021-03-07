@@ -18,10 +18,10 @@
   "dependencies": {
     "@angular-devkit/build-angular": "^0.13.9",
     "@angular/animations": "^7.2.13",
-    "@angular/cli": "^7.3.8",
+    "@angular/cli": "^8.0.0",
     "@angular/common": "^7.2.13",
     "@angular/compiler": "^7.2.13",
-    "@angular/compiler-cli": "^7.2.13",
+    "@angular/compiler-cli": "^9.0.0",
     "@angular/core": "^7.2.13",
     "@angular/forms": "^7.2.13",
     "@angular/http": "^7.2.13",
